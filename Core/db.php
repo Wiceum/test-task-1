@@ -2,18 +2,24 @@
 
 function dbInstance(): PDO
 {
-    $db = new PDO(
-        'mysql:host=localhost;dbname=homestead;port=33060;charset=utf8',
-        'homestead',
-        'secret',
-        [
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-        ]
-    );
+    //чтобы создавать только один инстанс подключения к бд
+    static $db;
+
+    if ($db == null) {
+        $db = new PDO(
+            'mysql:host=localhost;dbname=homestead;port=33060;charset=utf8',
+            'homestead',
+            'secret',
+            [
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+            ]
+        );
+    }
+
     return $db;
 }
 
-function dbQuery(string $sql, array $params = []) : PDOStatement
+function dbQuery(string $sql, array $params = []): PDOStatement
 {
     $db = dbInstance();
     $query = $db->prepare($sql);
