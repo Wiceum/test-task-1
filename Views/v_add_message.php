@@ -25,6 +25,10 @@
         </label>
         <br>
         <button>Отправить</button>
-        <p><?= $err ?></p>
+        <div>
+            <?php foreach ($validateErrors as $error): ?>
+                <p><?= $error ?></p>
+            <?php endforeach; ?>
+        </div>
     </form>
 </div>

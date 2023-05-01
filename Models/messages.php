@@ -14,3 +14,14 @@ function messagesAdd(array $fields): bool
     dbQuery($sql, $fields);
     return true;
 }
+
+function messagesValidate(array $fields): array
+{
+    $errors = [];
+
+    if (in_array('', $fields, true)) {
+        $errors[] = 'Заполните все поля!';
+    }
+
+    return $errors;
+}

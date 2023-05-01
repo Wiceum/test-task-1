@@ -1,19 +1,16 @@
 <?php
 
 include_once('Models/messages.php');
+include_once('Core/utils.php');
 
-$fields = ['title' => '', 'author' => '', 'summary' => '', 'text' => ''];
-$err = '';
+$fields = array_fill_keys(['title', 'author', 'summary', 'text'], '');
+$validateErrors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $fields['title'] = trim($_POST['title']);
-    $fields['author'] = trim($_POST['author']);
-    $fields['summary'] = trim($_POST['summary']);
-    $fields['text'] = trim($_POST['text']);
+    $fields = extractFields($_POST, ['title', 'author', 'summary', 'text']);
+    $validateErrors = messagesValidate($fields);
 
-    if (in_array('', $fields, true)) {
-        $err = 'Заполните все поля!';
-    } else {
+    if (empty($validateErrors)) {
         messagesAdd($fields);
         header('Location: index.php');
         exit();
