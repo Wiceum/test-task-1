@@ -25,3 +25,12 @@ function messagesValidate(array $fields): array
 
     return $errors;
 }
+
+function messagesSanitize($fields)
+{
+    foreach ($fields as $key => $field) {
+        $fields[$key] = htmlspecialchars($field);
+    }
+
+    return $fields;
+}
