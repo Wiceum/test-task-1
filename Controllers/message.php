@@ -1,13 +1,16 @@
 <?php
 
 include_once('Models/messages.php');
+include_once('Models/comments.php');
 
-// checkID
 $strId = $_GET['id'] ?? '';
 $id = (int)$strId;
 
 $message = messagesOne($id);
-$hasMsg = $message !== false; // $message !== null;
+$hasMsg = $message !== false;
+
+$comments = commentsByMessageId($id);
+$commentErrors = [];
 
 if ($hasMsg) {
     include('Views/v_message.php');

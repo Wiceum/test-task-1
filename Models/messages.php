@@ -30,22 +30,3 @@ function messagesUpdate(int $id, array $fields) : bool
     return true;
 }
 
-function messagesValidate(array $fields): array
-{
-    $errors = [];
-
-    if (in_array('', $fields, true)) {
-        $errors[] = 'Заполните все поля!';
-    }
-
-    return $errors;
-}
-
-function messagesSanitize($fields)
-{
-    foreach ($fields as $key => $field) {
-        $fields[$key] = htmlspecialchars($field);
-    }
-
-    return $fields;
-}

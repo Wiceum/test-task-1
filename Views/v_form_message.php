@@ -33,8 +33,3 @@
         </div>
     </form>
 </div>
-<pre>
-    <?php
-    print_r($_SERVER['REQUEST_METHOD'] . PHP_EOL);
-    var_dump($validateErrors);?>
-</pre>

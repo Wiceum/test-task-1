@@ -22,9 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fields = extractFields($_REQUEST, ['id', 'title', 'author', 'summary', 'text']);
-    var_dump($fields);
-    $validateErrors = messagesValidate($fields);
-    $fields = messagesSanitize($fields);
+    $validateErrors = formValidate($fields);
+    $fields = formSanitize($fields);
     $id = $fields['id'];
 
     if (empty($validateErrors)) {

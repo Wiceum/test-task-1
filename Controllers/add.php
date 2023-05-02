@@ -8,8 +8,8 @@ $validateErrors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fields = extractFields($_POST, ['title', 'author', 'summary', 'text']);
-    $validateErrors = messagesValidate($fields);
-    $fields = messagesSanitize($fields);
+    $validateErrors = formValidate($fields);
+    $fields = formSanitize($fields);
 
     if (empty($validateErrors)) {
         messagesAdd($fields);
