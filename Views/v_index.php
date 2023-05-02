@@ -1,5 +1,5 @@
 <h1>Блог</h1>
-<a href="add.php">add</a>
+<a href="?c=add">Создать</a>
 <hr>
 <h2>Список сообщений</h2>
 <hr>
@@ -9,7 +9,7 @@
             <h3><?=$message['title']?></h3>
             <em><?=$message['summary']?></em>
             <br>
-            <a href="message.php?id=<?=$message['id']?>">
+            <a href="?c=message&id=<?=$message['id']?>">
                 Подробнее...
             </a>
             <hr>
