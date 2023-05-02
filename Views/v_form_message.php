@@ -3,6 +3,7 @@
 </p>
 <div class="form">
     <form method="post">
+        <input hidden name="id" value="<?= $fields['id'] ?? ''?>">
         <label>
             Заголовок:
             <input type="text" name="title" value="<?= $fields['title'] ?>">
@@ -32,3 +33,8 @@
         </div>
     </form>
 </div>
+<pre>
+    <?php
+    print_r($_SERVER['REQUEST_METHOD'] . PHP_EOL);
+    var_dump($validateErrors);?>
+</pre>

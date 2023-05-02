@@ -22,6 +22,14 @@ function messagesAdd(array $fields): bool
     return true;
 }
 
+function messagesUpdate(int $id, array $fields) : bool
+{
+    unset($fields['id']);
+    $sql = "UPDATE messages SET title = :title, author = :author, text = :text, summary = :summary WHERE id = $id";
+    dbQuery($sql, $fields);
+    return true;
+}
+
 function messagesValidate(array $fields): array
 {
     $errors = [];

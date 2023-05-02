@@ -18,4 +18,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-include('Views/v_add_message.php');
+include('Views/v_form_message.php');
