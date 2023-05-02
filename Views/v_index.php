@@ -7,9 +7,11 @@
     <?php foreach($messages as $message): ?>
         <div>
             <h3><?=$message['title']?></h3>
-            Автор:<?=$message['author']?>
-            <br>
             <em><?=$message['summary']?></em>
+            <br>
+            <a href="message.php?id=<?=$message['id']?>">
+                Подробнее...
+            </a>
             <hr>
         </div>
     <?php endforeach; ?>
